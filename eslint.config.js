@@ -3,11 +3,12 @@ import command from 'eslint-plugin-command/config';
 import oxlint from 'eslint-plugin-oxlint';
 import react from 'eslint-plugin-react';
 import reactCompiler from 'eslint-plugin-react-compiler';
-import reactHooks from 'eslint-plugin-react-hooks/flat';
+import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import reactYouMightNotNeedAnEffect from 'eslint-plugin-react-you-might-not-need-an-effect';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
 const eslintConfig = defineConfig([
   globalIgnores(['node_modules/**', 'dist/**', 'build/**', 'out/**']),
@@ -29,9 +30,10 @@ const eslintConfig = defineConfig([
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+      parser: tseslint.parser,
     },
   },
-  reactHooks.configs.recommended,
+  reactHooks.configs.flat.recommended,
   reactRefresh.configs.vite,
   reactCompiler.configs.recommended,
   reactYouMightNotNeedAnEffect.configs.recommended,
