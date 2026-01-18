@@ -1,0 +1,4 @@
+[tools]
+# frontend
+pnpm = "latest"
+node = "24"
