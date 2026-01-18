@@ -21,3 +21,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+## Claude Code - プロジェクト設定以外を無視
+.claude/settings.local.json
+!.claude/settings.json
+!.claude/skills/*
+
+
