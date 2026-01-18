@@ -37,6 +37,7 @@ export const isBitPosition = (value: number): value is BitPosition => {
 ```
 
 **Benefits**:
+
 - Prevents mixing incompatible types at compile time
 - Guarantees value validity through factory functions
 - Runtime validation with type guards
@@ -50,12 +51,12 @@ type MatchResult = "exact" | "match" | "none";
 
 function getClassName(result: MatchResult): string {
   switch (result) {
-    case 'exact':
-      return 'bg-green-500';
-    case 'match':
-      return 'bg-yellow-500';
-    case 'none':
-      return 'bg-gray-500';
+    case "exact":
+      return "bg-green-500";
+    case "match":
+      return "bg-yellow-500";
+    case "none":
+      return "bg-gray-500";
     default: {
       result satisfies never; // Error if new variant added
       throw new Error(`Unsupported match result: ${String(result)}`);
@@ -65,6 +66,7 @@ function getClassName(result: MatchResult): string {
 ```
 
 **Benefits**:
+
 - Adding a new union member will trigger a compile-time error
 - Keeps union definition and switch statement in sync automatically
 - No temporary variables needed
@@ -75,6 +77,7 @@ function getClassName(result: MatchResult): string {
 Always use specific types instead of `any` when possible.
 
 **Bad**:
+
 ```typescript
 function processData(data: any): any {
   return data.value;
@@ -82,6 +85,7 @@ function processData(data: any): any {
 ```
 
 **Good**:
+
 ```typescript
 // Using generics
 function processData<T extends { value: U }, U>(data: T): U {
@@ -90,14 +94,15 @@ function processData<T extends { value: U }, U>(data: T): U {
 
 // Using unknown with type narrowing
 function processData(data: unknown): unknown {
-  if (typeof data === 'object' && data !== null && 'value' in data) {
+  if (typeof data === "object" && data !== null && "value" in data) {
     return (data as Record<string, unknown>).value;
   }
-  throw new Error('Invalid data format');
+  throw new Error("Invalid data format");
 }
 ```
 
 **Alternatives to `any`**:
+
 - Use `unknown` when type is truly not known, then narrow with type guards
 - Use `Record<string, unknown>` for objects with unknown property values
 - Use union types to represent multiple possible types
@@ -108,27 +113,29 @@ function processData(data: unknown): unknown {
 Never use non-null assertions. Instead, use proper null checking.
 
 **Bad**:
+
 ```typescript
 function getConfig(configMap: Map<string, Config>): Config {
-  const config = configMap.get('default');
+  const config = configMap.get("default");
   return config!; // Dangerous!
 }
 ```
 
 **Good**:
+
 ```typescript
 // Explicit null check
 function getConfig(configMap: Map<string, Config>): Config {
-  const config = configMap.get('default');
+  const config = configMap.get("default");
   if (!config) {
-    throw new Error('Default config not found');
+    throw new Error("Default config not found");
   }
   return config;
 }
 
 // Optional chaining with nullish coalescing
 function getConfig(configMap: Map<string, Config>): Config {
-  return configMap.get('default') ?? getDefaultConfig();
+  return configMap.get("default") ?? getDefaultConfig();
 }
 ```
 
@@ -137,6 +144,7 @@ function getConfig(configMap: Map<string, Config>): Config {
 Always specify return types for functions.
 
 **Bad**:
+
 ```typescript
 const calculateTotal = (items: Item[]) => {
   return items.reduce((sum, item) => sum + item.price, 0);
@@ -144,6 +152,7 @@ const calculateTotal = (items: Item[]) => {
 ```
 
 **Good**:
+
 ```typescript
 const calculateTotal = (items: Item[]): number => {
   return items.reduce((sum, item) => sum + item.price, 0);
@@ -183,6 +192,7 @@ export const getDots = (value: BinaryPattern): readonly DotNumber[] => {
 Create new variables instead of reassigning function parameters.
 
 **Bad**:
+
 ```typescript
 function mergeOptions(options: Options, overrides?: Options): Options {
   options = { ...options, ...overrides }; // Reassignment
@@ -191,6 +201,7 @@ function mergeOptions(options: Options, overrides?: Options): Options {
 ```
 
 **Good**:
+
 ```typescript
 function mergeOptions(options: Options, overrides?: Options): Options {
   const mergedOptions = { ...options, ...overrides };
@@ -203,24 +214,29 @@ function mergeOptions(options: Options, overrides?: Options): Options {
 Use proper type-safe methods to remove properties instead of setting to `undefined` or using `delete`.
 
 **Bad**:
+
 ```typescript
 function removeProperty(obj: Record<string, JSONSchema7Definition>): void {
-  obj['propertyToRemove'] = undefined; // Type error!
+  obj["propertyToRemove"] = undefined; // Type error!
 }
 ```
 
 **Good - Destructuring (Immutable)**:
+
 ```typescript
-function removeProperty(obj: Record<string, JSONSchema7Definition>): Record<string, JSONSchema7Definition> {
+function removeProperty(
+  obj: Record<string, JSONSchema7Definition>,
+): Record<string, JSONSchema7Definition> {
   const { propertyToRemove, ...rest } = obj;
   return rest;
 }
 ```
 
 **Good - Delete (In-place)**:
+
 ```typescript
 function removeProperty(obj: Record<string, JSONSchema7Definition>): void {
-  delete obj['propertyToRemove'];
+  delete obj["propertyToRemove"];
 }
 ```
 
@@ -263,6 +279,7 @@ import { generateBrailleData } from "@/lib/braille";
 - Avoid classes with only static members
 
 **Bad - Class with Only Static Members**:
+
 ```typescript
 export class Utils {
   public static formatDate(date: Date): string {
@@ -272,6 +289,7 @@ export class Utils {
 ```
 
 **Good - Simple Exports**:
+
 ```typescript
 export const formatDate = (date: Date): string => {
   return date.toISOString();
@@ -283,20 +301,12 @@ export const parseDate = (dateStr: string): Date => {
 ```
 
 **Centralized Type Exports**:
+
 ```typescript
 // types/index.ts
-export type {
-  DotNumber,
-  BitPosition,
-  BrailleUnicode,
-  BinaryPattern,
-} from "./braille";
+export type { DotNumber, BitPosition, BrailleUnicode, BinaryPattern } from "./braille";
 
-export type {
-  BrailleCellProps,
-  BrailleGridProps,
-  BrailleTableProps,
-} from "./components";
+export type { BrailleCellProps, BrailleGridProps, BrailleTableProps } from "./components";
 ```
 
 ## React Components
@@ -344,6 +354,7 @@ export const BrailleCell = ({
 ### Remove Unused Code
 
 After refactoring, always remove unused code:
+
 - Delete unused variables, parameters, functions, classes, imports
 - Don't comment out old code - delete it (git history preserves it)
 - Remove unreachable code paths
@@ -378,7 +389,8 @@ const buttonVariants = cva(
       variant: {
         default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
         destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-        outline: "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+        outline:
+          "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
       },
       size: {
         default: "h-9 px-4 py-2",
@@ -394,8 +406,7 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 ```
@@ -483,9 +494,7 @@ Throw Error for invalid values. Write specific error messages.
 ```typescript
 export const createBrailleUnicode = (value: number): BrailleUnicode => {
   if (!Number.isInteger(value) || value < 0x2800 || value > 0x28ff) {
-    throw new Error(
-      `Invalid braille unicode: 0x${value.toString(16)}. Must be 0x2800-0x28FF.`
-    );
+    throw new Error(`Invalid braille unicode: 0x${value.toString(16)}. Must be 0x2800-0x28FF.`);
   }
   return value as BrailleUnicode;
 };

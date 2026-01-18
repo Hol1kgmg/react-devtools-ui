@@ -13,16 +13,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Available Rules
 
-| Rule | Applies To | Description |
-| ----------------------- | ---------- | ---------------------------------------------- |
-| **typescript-patterns** | `**/*.ts` | TypeScript coding patterns and conventions |
+| Rule                    | Applies To | Description                                |
+| ----------------------- | ---------- | ------------------------------------------ |
+| **typescript-patterns** | `**/*.ts`  | TypeScript coding patterns and conventions |
 
 _Note: Rules will be added as the project evolves._
 
 ## Available Skills
 
-| Skill | When to Use |
-| -------------------- | ---------------------------------------------- |
+| Skill               | When to Use                                                                               |
+| ------------------- | ----------------------------------------------------------------------------------------- |
 | **frontend-design** | Building web components, pages, or applications with distinctive, production-grade design |
 
 ## Work Rules
