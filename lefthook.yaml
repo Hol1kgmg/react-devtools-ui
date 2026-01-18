@@ -5,16 +5,16 @@ pre-commit:
       run: gitleaks git --staged --redact --verbose --no-banner
 
     lint-code:
-      glob: "*.{js,ts,jsx,tsx}"
+      glob: '*.{js,ts,jsx,tsx}'
       run: pnpm oxlint --type-aware --type-check --fix {staged_files} && pnpm eslint --fix {staged_files}
       stage_fixed: true
 
     lint-markup:
-      glob: "*.{html,jsx,tsx}"
+      glob: '*.{html,jsx,tsx}'
       run: pnpm markuplint {staged_files} --fix --problem-only
       stage_fixed: true
 
     format:
-      glob: "*.{js,ts,jsx,tsx,json,yml,yaml,md}"
+      glob: '*.{js,ts,jsx,tsx,json,yml,yaml,md}'
       run: pnpm oxfmt --no-error-on-unmatched-pattern {staged_files}
       stage_fixed: true

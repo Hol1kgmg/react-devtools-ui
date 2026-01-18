@@ -21,6 +21,7 @@
     "@eslint/js": "^9.39.1",
     "@markuplint/jsx-parser": "^4.7.22",
     "@markuplint/react-spec": "^4.5.22",
+    "@tsconfig/strictest": "^2.0.8",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
