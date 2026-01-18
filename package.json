@@ -7,10 +7,11 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "lint": "oxlint",
-    "lint:fix": "oxlint . --fix",
+    "lint": "npm-run-all -p lint:*",
+    "lint:code": "oxlint --type-aware --type-check --fix && eslint --fix",
+    "lint:markup": "markuplint \"src/**/*.{html,jsx,tsx}\" --fix --problem-only",
     "format": "oxfmt . --write",
-    "format:check": "oxfmt . --check"
+    "check": "npm-run-all lint format"
   },
   "dependencies": {
     "react": "^19.2.0",
@@ -18,6 +19,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@markuplint/jsx-parser": "^4.7.22",
+    "@markuplint/react-spec": "^4.5.22",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
@@ -32,6 +35,8 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "eslint-plugin-react-you-might-not-need-an-effect": "^0.8.5",
     "globals": "^16.5.0",
+    "markuplint": "^4.14.0",
+    "npm-run-all": "^4.1.5",
     "oxfmt": "^0.24.0",
     "oxlint": "^1.39.0",
     "oxlint-tsgolint": "^0.11.1",

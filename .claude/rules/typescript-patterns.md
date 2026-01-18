@@ -1,8 +1,8 @@
 ---
 description: Use when writing or reviewing TypeScript/React code. Covers Branded Types, immutability, type safety, exhaustiveness checks, avoiding any/non-null assertions, React/Next.js patterns. (project)
 alwaysApply: false
-paths: "**/*.ts,**/*.tsx"
-globs: "*.ts,*.tsx"
+paths: '**/*.ts,**/*.tsx'
+globs: '*.ts,*.tsx'
 ---
 
 # TypeScript/React Patterns and Best Practices
@@ -47,16 +47,16 @@ export const isBitPosition = (value: number): value is BitPosition => {
 When branching on string unions, use the `satisfies never` pattern to guarantee compile-time exhaustiveness.
 
 ```typescript
-type MatchResult = "exact" | "match" | "none";
+type MatchResult = 'exact' | 'match' | 'none';
 
 function getClassName(result: MatchResult): string {
   switch (result) {
-    case "exact":
-      return "bg-green-500";
-    case "match":
-      return "bg-yellow-500";
-    case "none":
-      return "bg-gray-500";
+    case 'exact':
+      return 'bg-green-500';
+    case 'match':
+      return 'bg-yellow-500';
+    case 'none':
+      return 'bg-gray-500';
     default: {
       result satisfies never; // Error if new variant added
       throw new Error(`Unsupported match result: ${String(result)}`);
@@ -94,10 +94,10 @@ function processData<T extends { value: U }, U>(data: T): U {
 
 // Using unknown with type narrowing
 function processData(data: unknown): unknown {
-  if (typeof data === "object" && data !== null && "value" in data) {
+  if (typeof data === 'object' && data !== null && 'value' in data) {
     return (data as Record<string, unknown>).value;
   }
-  throw new Error("Invalid data format");
+  throw new Error('Invalid data format');
 }
 ```
 
@@ -116,7 +116,7 @@ Never use non-null assertions. Instead, use proper null checking.
 
 ```typescript
 function getConfig(configMap: Map<string, Config>): Config {
-  const config = configMap.get("default");
+  const config = configMap.get('default');
   return config!; // Dangerous!
 }
 ```
@@ -126,16 +126,16 @@ function getConfig(configMap: Map<string, Config>): Config {
 ```typescript
 // Explicit null check
 function getConfig(configMap: Map<string, Config>): Config {
-  const config = configMap.get("default");
+  const config = configMap.get('default');
   if (!config) {
-    throw new Error("Default config not found");
+    throw new Error('Default config not found');
   }
   return config;
 }
 
 // Optional chaining with nullish coalescing
 function getConfig(configMap: Map<string, Config>): Config {
-  return configMap.get("default") ?? getDefaultConfig();
+  return configMap.get('default') ?? getDefaultConfig();
 }
 ```
 
@@ -217,7 +217,7 @@ Use proper type-safe methods to remove properties instead of setting to `undefin
 
 ```typescript
 function removeProperty(obj: Record<string, JSONSchema7Definition>): void {
-  obj["propertyToRemove"] = undefined; // Type error!
+  obj['propertyToRemove'] = undefined; // Type error!
 }
 ```
 
@@ -236,7 +236,7 @@ function removeProperty(
 
 ```typescript
 function removeProperty(obj: Record<string, JSONSchema7Definition>): void {
-  delete obj["propertyToRemove"];
+  delete obj['propertyToRemove'];
 }
 ```
 
@@ -268,8 +268,8 @@ const BIT_TO_DOT_MAP = {
 - Use `@/` alias for path resolution
 
 ```typescript
-import type { BrailleCharacter, DotNumber } from "@/types";
-import { generateBrailleData } from "@/lib/braille";
+import type { BrailleCharacter, DotNumber } from '@/types';
+import { generateBrailleData } from '@/lib/braille';
 ```
 
 ### Exports
@@ -304,9 +304,9 @@ export const parseDate = (dateStr: string): Date => {
 
 ```typescript
 // types/index.ts
-export type { DotNumber, BitPosition, BrailleUnicode, BinaryPattern } from "./braille";
+export type { DotNumber, BitPosition, BrailleUnicode, BinaryPattern } from './braille';
 
-export type { BrailleCellProps, BrailleGridProps, BrailleTableProps } from "./components";
+export type { BrailleCellProps, BrailleGridProps, BrailleTableProps } from './components';
 ```
 
 ## React Components
@@ -383,24 +383,24 @@ Use `cva` for variant management and extract types with `VariantProps`.
 
 ```typescript
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
-        destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+        default: 'bg-primary text-primary-foreground shadow hover:bg-primary/90',
+        destructive: 'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90',
         outline:
-          "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+          'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
       },
       size: {
-        default: "h-9 px-4 py-2",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-10 rounded-md px-8",
+        default: 'h-9 px-4 py-2',
+        sm: 'h-8 rounded-md px-3 text-xs',
+        lg: 'h-10 rounded-md px-8',
       },
     },
     defaultVariants: {
-      variant: "default",
-      size: "default",
+      variant: 'default',
+      size: 'default',
     },
   },
 );
@@ -463,11 +463,11 @@ export default function Home() {
 Define meta information using `Metadata` type.
 
 ```typescript
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Braille Finder",
-  description: "Braille pattern search tool",
+  title: 'Braille Finder',
+  description: 'Braille pattern search tool',
 };
 ```
 
@@ -476,7 +476,7 @@ export const metadata: Metadata = {
 Use TypeScript configuration in `next.config.ts`.
 
 ```typescript
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
