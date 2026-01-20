@@ -1,43 +1,34 @@
-import type { ComponentPropsWithoutRef, ReactElement, ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactElement } from 'react';
 
+import { useDraggable } from '../../hooks/useDraggable';
 import styles from './FloatButton.module.css';
 
-type FloatButtonPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+const BUTTON_SIZE = 40;
 
-type FloatButtonShape = 'circle' | 'square';
+export type FloatButtonProps = Omit<ComponentPropsWithoutRef<'button'>, 'children'>;
 
-type FloatButtonSize = 'small' | 'medium' | 'large';
+export const FloatButton = ({ className, onClick, ...props }: FloatButtonProps): ReactElement => {
+  const { position, isDragging, ref, handlers } = useDraggable<HTMLButtonElement>({
+    size: BUTTON_SIZE,
+    onClickWithoutDrag: onClick
+      ? () => onClick({} as React.MouseEvent<HTMLButtonElement>)
+      : undefined,
+  });
 
-export type FloatButtonProps = {
-  readonly position?: FloatButtonPosition;
-  readonly shape?: FloatButtonShape;
-  readonly size?: FloatButtonSize;
-  readonly icon?: ReactNode;
-  readonly children?: ReactNode;
-} & Omit<ComponentPropsWithoutRef<'button'>, 'children'>;
-
-export const FloatButton = ({
-  position = 'bottom-right',
-  shape = 'circle',
-  size = 'medium',
-  icon,
-  children,
-  className,
-  ...props
-}: FloatButtonProps): ReactElement => {
-  const classNames = [
-    styles['floatButton'],
-    styles[position],
-    styles[shape],
-    styles[size],
-    className,
-  ]
+  const classNames = [styles['floatButton'], isDragging ? styles['dragging'] : '', className]
     .filter(Boolean)
     .join(' ');
 
   return (
-    <button className={classNames} type="button" {...props}>
-      {icon ?? children}
+    <button
+      ref={ref}
+      className={classNames}
+      style={{ left: position.x, top: position.y }}
+      type="button"
+      {...handlers}
+      {...props}
+    >
+      <img alt="Settings" draggable={false} height={25} src="/gear.svg" width={30} />
     </button>
   );
 };
