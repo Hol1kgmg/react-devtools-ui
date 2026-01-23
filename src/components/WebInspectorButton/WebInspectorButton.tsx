@@ -1,13 +1,17 @@
 import type { ComponentPropsWithoutRef, ReactElement } from 'react';
 
 import { useDraggable } from '../../hooks/useDraggable';
-import styles from './FloatButton.module.css';
+import styles from './WebInspectorButton.module.css';
 
 const BUTTON_SIZE = 40;
 
-export type FloatButtonProps = Omit<ComponentPropsWithoutRef<'button'>, 'children'>;
+export type WebInspectorButtonProps = Omit<ComponentPropsWithoutRef<'button'>, 'children'>;
 
-export const FloatButton = ({ className, onClick, ...props }: FloatButtonProps): ReactElement => {
+export const WebInspectorButton = ({
+  className,
+  onClick,
+  ...props
+}: WebInspectorButtonProps): ReactElement => {
   const { position, isDragging, ref, handlers } = useDraggable<HTMLButtonElement>({
     size: BUTTON_SIZE,
     onClickWithoutDrag: onClick
@@ -15,7 +19,7 @@ export const FloatButton = ({ className, onClick, ...props }: FloatButtonProps):
       : undefined,
   });
 
-  const classNames = [styles['floatButton'], isDragging ? styles['dragging'] : '', className]
+  const classNames = [styles['webInspectorButton'], isDragging ? styles['dragging'] : '', className]
     .filter(Boolean)
     .join(' ');
 

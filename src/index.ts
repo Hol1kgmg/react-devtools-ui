@@ -1,2 +1,2 @@
-export { FloatButton } from './components/FloatButton';
-export type { FloatButtonProps } from './components/FloatButton';
+export { WebInspectorButton } from './components/WebInspectorButton';
+export type { WebInspectorButtonProps } from './components/WebInspectorButton';

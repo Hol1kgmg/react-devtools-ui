@@ -62,8 +62,8 @@
   /* ==========================================================================
      Sizing
      ========================================================================== */
-  --size-float-button: 40px;
-  --size-float-button-icon: 30px;
+  --size-web-inspector-button: 40px;
+  --size-web-inspector-button-icon: 30px;
   --size-resize-handle: 12px;
   --size-handle-bar-width: 36px;
   --size-handle-bar-height: 4px;
@@ -72,7 +72,7 @@
      Z-Index
      ========================================================================== */
   --z-panel: 999;
-  --z-float-button: 1000;
+  --z-web-inspector-button: 1000;
 
   /* ==========================================================================
      Transition
