@@ -1,0 +1,8 @@
+.consolePanel {
+  height: 100%;
+}
+
+.placeholder {
+  color: var(--color-text-disabled);
+  font-size: var(--font-size-sm);
+}
