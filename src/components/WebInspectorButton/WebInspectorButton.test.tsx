@@ -10,11 +10,11 @@ const renderWithProvider = (ui: React.ReactElement): ReturnType<typeof render> =
 };
 
 describe('WebInspectorButton', () => {
-  it('gear.svg アイコンを表示する', () => {
-    renderWithProvider(<WebInspectorButton />);
-    const img = screen.getByAltText('Settings');
-    expect(img).toBeInTheDocument();
-    expect(img).toHaveAttribute('src', '/gear.svg');
+  it('GearIcon を表示する', () => {
+    renderWithProvider(<WebInspectorButton data-testid="btn" />);
+    const button = screen.getByTestId('btn');
+    const svg = button.querySelector('svg');
+    expect(svg).toBeInTheDocument();
   });
 
   it('クリックでパネルの開閉状態がトグルされる', async () => {
