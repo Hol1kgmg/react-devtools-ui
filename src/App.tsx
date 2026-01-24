@@ -1,8 +1,14 @@
 import {
   WebInspectorButton,
   WebInspectorPanel,
-  WebInspectorProvider,
+  WebInspectorProvider
 } from 'react-web-inspector-ui';
+
+// Development operation check
+// import './index.css';
+// import { WebInspectorProvider } from './components/WebInspector';
+// import { WebInspectorButton } from './components/WebInspectorButton/';
+// import { WebInspectorPanel } from './components/WebInspectorPanel/';
 
 function App(): React.ReactElement {
   return (

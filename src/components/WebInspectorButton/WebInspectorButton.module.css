@@ -18,11 +18,11 @@
   touch-action: none;
 }
 
-.webInspectorButton img {
-  filter: light-dark(none, brightness(0) invert(1));
+.webInspectorButton svg {
   opacity: 0.9;
   width: var(--size-web-inspector-button-icon);
   height: var(--size-web-inspector-button-icon);
+  flex-shrink: 0;
 }
 
 .webInspectorButton:hover {
@@ -30,7 +30,7 @@
   box-shadow: var(--shadow-md);
 }
 
-.webInspectorButton:hover img {
+.webInspectorButton:hover svg {
   opacity: 1;
 }
 

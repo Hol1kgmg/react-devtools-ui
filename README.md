@@ -34,7 +34,6 @@ import {
   WebInspectorButton,
   WebInspectorPanel,
 } from 'react-web-inspector-ui';
-import 'react-web-inspector-ui/style.css';
 
 function App() {
   return (
