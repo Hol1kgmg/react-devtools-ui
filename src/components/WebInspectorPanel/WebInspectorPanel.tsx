@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { ComponentPropsWithoutRef, ReactElement } from 'react';
 
 import { useResizable } from '../../hooks/useResizable';
+import { useWebInspector } from '../WebInspector';
 import { ConsolePanel } from './ConsolePanel';
 import { NetworkPanel } from './NetworkPanel';
 import styles from './WebInspectorPanel.module.css';
@@ -12,10 +13,7 @@ import styles from './WebInspectorPanel.module.css';
 
 type TabType = 'console' | 'network';
 
-export type WebInspectorPanelProps = Omit<ComponentPropsWithoutRef<'div'>, 'children'> & {
-  /** Whether the panel is open */
-  readonly isOpen: boolean;
-};
+export type WebInspectorPanelProps = Omit<ComponentPropsWithoutRef<'div'>, 'children'>;
 
 // ============================================================================
 // Constants
@@ -31,10 +29,10 @@ const TABS: readonly { readonly id: TabType; readonly label: string }[] = [
 // ============================================================================
 
 export const WebInspectorPanel = ({
-  isOpen,
   className,
   ...props
 }: WebInspectorPanelProps): ReactElement => {
+  const { isOpen } = useWebInspector();
   const { height, isResizing, handleRef, handleHandlers } = useResizable<HTMLDivElement>();
   const [activeTab, setActiveTab] = useState<TabType>('console');
 

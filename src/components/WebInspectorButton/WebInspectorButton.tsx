@@ -1,22 +1,24 @@
 import type { ComponentPropsWithoutRef, ReactElement } from 'react';
 
 import { useDraggable } from '../../hooks/useDraggable';
+import { useWebInspector } from '../WebInspector';
 import styles from './WebInspectorButton.module.css';
 
 const BUTTON_SIZE = 40;
 
-export type WebInspectorButtonProps = Omit<ComponentPropsWithoutRef<'button'>, 'children'>;
+export type WebInspectorButtonProps = Omit<
+  ComponentPropsWithoutRef<'button'>,
+  'children' | 'onClick'
+>;
 
 export const WebInspectorButton = ({
   className,
-  onClick,
   ...props
 }: WebInspectorButtonProps): ReactElement => {
+  const { toggle } = useWebInspector();
   const { position, isDragging, ref, handlers } = useDraggable<HTMLButtonElement>({
     size: BUTTON_SIZE,
-    onClickWithoutDrag: onClick
-      ? () => onClick({} as React.MouseEvent<HTMLButtonElement>)
-      : undefined,
+    onClickWithoutDrag: toggle,
   });
 
   const classNames = [styles['webInspectorButton'], isDragging ? styles['dragging'] : '', className]
