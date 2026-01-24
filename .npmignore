@@ -1,0 +1,22 @@
+# Source
+src/
+
+# Config files
+.claude/
+.markuplintrc.json
+.mise.toml
+.oxfmtrc.json
+.oxlintrc.json
+eslint.config.js
+lefthook.yaml
+tsconfig*.json
+vite.config.ts
+
+# Development
+index.html
+public/
+node_modules/
+pnpm-lock.yaml
+
+# Documentation (dev only)
+CLAUDE.md
