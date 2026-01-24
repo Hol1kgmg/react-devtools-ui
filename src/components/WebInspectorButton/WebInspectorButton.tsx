@@ -2,6 +2,7 @@ import type { ComponentPropsWithoutRef, ReactElement } from 'react';
 
 import { useDraggable } from '../../hooks/useDraggable';
 import { useWebInspector } from '../WebInspector';
+import { GearIcon } from './GearIcon';
 import styles from './WebInspectorButton.module.css';
 
 const BUTTON_SIZE = 40;
@@ -34,7 +35,7 @@ export const WebInspectorButton = ({
       {...handlers}
       {...props}
     >
-      <img alt="Settings" draggable={false} height={25} src="/gear.svg" width={30} />
+      <GearIcon />
     </button>
   );
 };
