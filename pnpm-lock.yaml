@@ -99,8 +99,8 @@ importers:
         specifier: ^19.2.0
         version: 19.2.3(react@19.2.3)
       react-web-inspector-ui:
-        specifier: ^0.1.0
-        version: 0.1.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: ^0.1.1
+        version: 0.1.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       typescript:
         specifier: ~5.9.3
         version: 5.9.3
@@ -2517,8 +2517,8 @@ packages:
     resolution: {integrity: sha512-QgT5//D3jfjJb6Gsjxv0Slpj23ip+HtOpnNgnb2S5zU3CB26G/IDPGoy4RJB42wzFE46DRsstbW6tKHoKbhAxw==}
     engines: {node: '>=0.10.0'}
 
-  react-web-inspector-ui@0.1.0:
-    resolution: {integrity: sha512-84cdTVAfROp5oyA0HDixIzyrdofdx41KtWNO1FF4CbUWvu6G1LzpDSpM75hD1vtFKRt9TUz4DK2NptFmRXYDqg==}
+  react-web-inspector-ui@0.1.1:
+    resolution: {integrity: sha512-+kk9iTnOa3ydczCLXwvezUQC31fndPPPSYCaQ6+wEHvZXF5N+adWi5o+37IVHN6PWZgxDmJKr1az72paY+OBdg==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
@@ -5778,7 +5778,7 @@ snapshots:
 
   react-refresh@0.18.0: {}
 
-  react-web-inspector-ui@0.1.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  react-web-inspector-ui@0.1.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
