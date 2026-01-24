@@ -1,7 +1,8 @@
-import './App.css';
-import { WebInspectorProvider } from './components/WebInspector';
-import { WebInspectorButton } from './components/WebInspectorButton';
-import { WebInspectorPanel } from './components/WebInspectorPanel';
+import {
+  WebInspectorButton,
+  WebInspectorPanel,
+  WebInspectorProvider,
+} from 'react-web-inspector-ui';
 
 function App(): React.ReactElement {
   return (

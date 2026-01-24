@@ -1,6 +1,7 @@
 import { resolve } from 'node:path';
 
 import react from '@vitejs/plugin-react';
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 import dts from 'vite-plugin-dts';
 import { defineConfig } from 'vitest/config';
 
@@ -8,6 +9,7 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   plugins: [
     react(),
+    cssInjectedByJsPlugin(),
     dts({
       include: ['src/components', 'src/index.ts'],
       exclude: ['**/*.test.ts', '**/*.test.tsx'],
