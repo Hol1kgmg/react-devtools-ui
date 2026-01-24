@@ -1,8 +1,98 @@
+/* ==========================================================================
+   Console Panel
+   ========================================================================== */
+
 .consolePanel {
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
-.placeholder {
-  color: var(--color-text-disabled);
+/* ==========================================================================
+   Toolbar
+   ========================================================================== */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-surface-secondary);
+}
+
+.clearButton {
+  padding: var(--spacing-xs) var(--spacing-md);
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.clearButton:hover {
+  background-color: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+
+/* ==========================================================================
+   Log List
+   ========================================================================== */
+
+.logList {
+  flex: 1;
+  overflow-y: auto;
+  font-family: monospace;
+  font-size: var(--font-size-sm);
+}
+
+/* ==========================================================================
+   Log Entry
+   ========================================================================== */
+
+.logEntry {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.timestamp {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+}
+
+.message {
+  flex: 1;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+/* ==========================================================================
+   Log Levels
+   ========================================================================== */
+
+.level-log {
+  color: var(--color-text-primary);
+}
+
+.level-info {
+  color: var(--color-accent);
+}
+
+.level-warn {
+  background-color: var(--color-warn-bg);
+  color: var(--color-warn-text);
+}
+
+.level-error {
+  background-color: var(--color-error-bg);
+  color: var(--color-error-text);
+}
+
+.level-debug {
+  color: var(--color-text-muted);
 }
