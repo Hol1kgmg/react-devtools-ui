@@ -29,7 +29,11 @@ pnpm add react-web-inspector-ui
 ### Basic Usage
 
 ```tsx
-import { WebInspectorProvider, WebInspectorButton, WebInspectorPanel } from 'react-web-inspector-ui';
+import {
+  WebInspectorProvider,
+  WebInspectorButton,
+  WebInspectorPanel,
+} from 'react-web-inspector-ui';
 import 'react-web-inspector-ui/style.css';
 
 function App() {
@@ -56,9 +60,7 @@ function CustomControls() {
 
   return (
     <div>
-      <button onClick={toggle}>
-        {isOpen ? 'Close Inspector' : 'Open Inspector'}
-      </button>
+      <button onClick={toggle}>{isOpen ? 'Close Inspector' : 'Open Inspector'}</button>
     </div>
   );
 }
@@ -70,26 +72,26 @@ function CustomControls() {
 
 Provider component that manages the inspector state.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `children` | `ReactNode` | - | Child elements |
-| `defaultOpen` | `boolean` | `false` | Whether the panel is open by default |
+| Prop          | Type        | Default | Description                          |
+| ------------- | ----------- | ------- | ------------------------------------ |
+| `children`    | `ReactNode` | -       | Child elements                       |
+| `defaultOpen` | `boolean`   | `false` | Whether the panel is open by default |
 
 ### `<WebInspectorButton>`
 
 A draggable button that toggles the inspector panel.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | - | Custom class name |
+| Prop        | Type     | Default | Description       |
+| ----------- | -------- | ------- | ----------------- |
+| `className` | `string` | -       | Custom class name |
 
 ### `<WebInspectorPanel>`
 
 Panel displaying console logs and network information.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | - | Custom class name |
+| Prop        | Type     | Default | Description       |
+| ----------- | -------- | ------- | ----------------- |
+| `className` | `string` | -       | Custom class name |
 
 ### `useWebInspector()`
 
@@ -97,10 +99,10 @@ Hook that provides inspector state and control functions.
 
 ```tsx
 const {
-  isOpen,  // boolean - Whether the panel is open
-  open,    // () => void - Open the panel
-  close,   // () => void - Close the panel
-  toggle,  // () => void - Toggle the panel
+  isOpen, // boolean - Whether the panel is open
+  open, // () => void - Open the panel
+  close, // () => void - Close the panel
+  toggle, // () => void - Toggle the panel
 } = useWebInspector();
 ```
 
