@@ -99,8 +99,8 @@ importers:
         specifier: ^19.2.3
         version: 19.2.3(react@19.2.3)
       react-web-inspector-ui:
-        specifier: ^0.1.4
-        version: 0.1.4(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: ^0.1.5
+        version: 0.1.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       typescript:
         specifier: ~5.9.3
         version: 5.9.3
@@ -1270,8 +1270,8 @@ packages:
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
-  baseline-browser-mapping@2.9.17:
-    resolution: {integrity: sha512-agD0MgJFUP/4nvjqzIB29zRPUuCF7Ge6mEv9s8dHrtYD7QWXRcx75rOADE/d5ah1NI+0vkDl0yorDd5U852IQQ==}
+  baseline-browser-mapping@2.9.18:
+    resolution: {integrity: sha512-e23vBV1ZLfjb9apvfPk4rHVu2ry6RIr2Wfs+O324okSidrX7pTAnEJPCh/O5BtRlr7QtZI7ktOP3vsqr7Z5XoA==}
     hasBin: true
 
   bcp-47@2.1.0:
@@ -2524,8 +2524,8 @@ packages:
     resolution: {integrity: sha512-QgT5//D3jfjJb6Gsjxv0Slpj23ip+HtOpnNgnb2S5zU3CB26G/IDPGoy4RJB42wzFE46DRsstbW6tKHoKbhAxw==}
     engines: {node: '>=0.10.0'}
 
-  react-web-inspector-ui@0.1.4:
-    resolution: {integrity: sha512-UZ1Zi8wScRm6PFmkBF54lq+AXVTS5DmGNXwhg7HLJXyEDoaI/kv035V8/evtWacrxg4YiHt1pR46Cl9qiEKqCA==}
+  react-web-inspector-ui@0.1.5:
+    resolution: {integrity: sha512-qJofq86/gIFDNwyeBgRtl+ad5/8B1ufBTbTqAvne5B34snkJT/Zte4S/yVnz2s2XCvscxM2g6MfIB32ht8MPZQ==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
@@ -4385,7 +4385,7 @@ snapshots:
 
   balanced-match@1.0.2: {}
 
-  baseline-browser-mapping@2.9.17: {}
+  baseline-browser-mapping@2.9.18: {}
 
   bcp-47@2.1.0:
     dependencies:
@@ -4412,7 +4412,7 @@ snapshots:
 
   browserslist@4.28.1:
     dependencies:
-      baseline-browser-mapping: 2.9.17
+      baseline-browser-mapping: 2.9.18
       caniuse-lite: 1.0.30001766
       electron-to-chromium: 1.5.278
       node-releases: 2.0.27
@@ -5796,7 +5796,7 @@ snapshots:
 
   react-refresh@0.18.0: {}
 
-  react-web-inspector-ui@0.1.4(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  react-web-inspector-ui@0.1.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)

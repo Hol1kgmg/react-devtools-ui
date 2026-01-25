@@ -26,7 +26,46 @@ pnpm add react-web-inspector-ui
 
 ## Usage
 
-### Basic Usage
+### Basic Usage (Recommended)
+
+Just wrap your app with `<WebInspector>` - that's all you need!
+
+```tsx
+import { WebInspector } from 'react-web-inspector-ui';
+
+function App() {
+  return (
+    <WebInspector>
+      <YourApp />
+    </WebInspector>
+  );
+}
+```
+
+### Next.js App Router
+
+Works directly in `layout.tsx` - no wrapper needed:
+
+```tsx
+// app/layout.tsx
+import { WebInspector } from 'react-web-inspector-ui';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html>
+      <body>
+        <WebInspector>
+          {children}
+        </WebInspector>
+      </body>
+    </html>
+  );
+}
+```
+
+### Advanced Usage
+
+For more control, you can use individual components:
 
 ```tsx
 import {
@@ -38,10 +77,7 @@ import {
 function App() {
   return (
     <WebInspectorProvider>
-      {/* Your application content */}
       <YourApp />
-
-      {/* Inspector button and panel */}
       <WebInspectorButton />
       <WebInspectorPanel />
     </WebInspectorProvider>
@@ -67,9 +103,22 @@ function CustomControls() {
 
 ## API
 
+### `<WebInspector>` (Recommended)
+
+All-in-one component that includes Provider, Button, and Panel. The simplest way to add the inspector to your app.
+
+| Prop          | Type                      | Default | Description                          |
+| ------------- | ------------------------- | ------- | ------------------------------------ |
+| `children`    | `ReactNode`               | -       | Child elements                       |
+| `defaultOpen` | `boolean`                 | `false` | Whether the panel is open by default |
+| `showButton`  | `boolean`                 | `true`  | Show the toggle button               |
+| `showPanel`   | `boolean`                 | `true`  | Show the panel                       |
+| `buttonProps` | `WebInspectorButtonProps` | -       | Props to pass to the button          |
+| `panelProps`  | `WebInspectorPanelProps`  | -       | Props to pass to the panel           |
+
 ### `<WebInspectorProvider>`
 
-Provider component that manages the inspector state.
+Provider component that manages the inspector state. Use this when you need more control over component placement.
 
 | Prop          | Type        | Default | Description                          |
 | ------------- | ----------- | ------- | ------------------------------------ |
